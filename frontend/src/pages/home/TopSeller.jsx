@@ -6,10 +6,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Pagination,Navigation} from 'swiper/modules';
 
 const categories = ["Choose a genre","Business","Fiction",
   "Horror","Adventure"]
@@ -50,6 +51,7 @@ const TopSeller = () => {
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
+        navigation={true}
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -68,7 +70,7 @@ const TopSeller = () => {
             spaceBetween: 50,
           }
         }}
-        modules={[Pagination]}
+        modules={[Pagination,Navigation]}
         className="mySwiper"
       >
       {
