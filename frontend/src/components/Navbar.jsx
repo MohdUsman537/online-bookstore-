@@ -15,7 +15,7 @@ const navigation = [
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const currentUser = true; // Mocked user authentication status
+  const currentUser = false; // Mocked user authentication status
   const token = false; // Define token (for conditional rendering)
 
   // Placeholder function for logout

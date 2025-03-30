@@ -11,7 +11,7 @@ require('dotenv').config();
 
 app.use(express.json());
 app.use(cors({
-    origin: ['https://localhost:5174/'], // Include Frontend URL
+    origin: ['https://localhost:5173/'], // Include Frontend URL
     credentials: true,
 }))
 
