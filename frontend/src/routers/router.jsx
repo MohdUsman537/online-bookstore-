@@ -1,5 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import App from "../App";
+import Home from "../pages/home/Home";
 
 
 // Router Directory(Entry Point)
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
       children:[
         {
             path:"/",
-            element: <h1>Home</h1>
+            element: <Home/>
         },
         {
             path:"/orders",
