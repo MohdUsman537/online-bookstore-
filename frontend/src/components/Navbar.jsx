@@ -5,6 +5,7 @@ import { IoSearchCircle } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
 import iconImage from "../assets/avatar.png";
+import { useSelector } from "react-redux";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
@@ -15,6 +16,9 @@ const navigation = [
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
+  const cartItems = useSelector(state => state.cart.cartItems);
+
   const currentUser = false; // Mocked user authentication status
   const token = false; // Define token (for conditional rendering)
 
@@ -98,7 +102,10 @@ const Navbar = () => {
 
           <Link to="/cart" className="bg-yellow-400 p-1 sm:px-6 px-2 flex items-center rounded-sm">
             <CiShoppingCart className="size-4" />
-            <span className="text-sm font-semibold sm:ml-1"></span>
+            {
+               cartItems.length > 0  ?  <span className="text-sm font-semibold sm:ml-1">{cartItems.length}</span> :
+               <span className="text-sm font-semibold sm:ml-1"></span>
+              }
           </Link>
         </div>
       </nav>
