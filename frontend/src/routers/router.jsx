@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import CartPage from "../pages/books/CartPage";
+import CheckOutPage from "../pages/books/CheckOutPage";
 
 
 // Router Directory(Entry Point)
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         {
           path: "/cart",
           element: <CartPage/>
+        },
+        {
+          path: "/checkout",
+          element: <CheckOutPage/>
         }
       ]
     },
