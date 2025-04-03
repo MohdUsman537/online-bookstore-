@@ -27,6 +27,7 @@ router.get("/:id",getSingleBook)
 // update a book
 router.put("/edit/:id",UpdateBook)
 
+// Delete a book
 router.delete("/:id",deleteBook)
 
 

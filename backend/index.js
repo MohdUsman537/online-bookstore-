@@ -9,11 +9,11 @@ const port = process.env.PORT || 5000;
 require('dotenv').config();
 
 
-app.use(express.json());
 app.use(cors({
-    origin: ['https://localhost:5173/'], // Include Frontend URL
+    origin: ['http://localhost:5173'], // Include Frontend URL
     credentials: true,
 }))
+app.use(express.json());
 
 
 //routes
