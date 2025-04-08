@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
 import iconImage from "../assets/avatar.png";
 import { useSelector } from "react-redux";
+import { useAuth } from "../context/AuthContext";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
@@ -19,13 +20,11 @@ const Navbar = () => {
   
   const cartItems = useSelector(state => state.cart.cartItems);
 
-  const currentUser = false; // Mocked user authentication status
-  const token = false; // Define token (for conditional rendering)
+  const {currentUser, logout} = useAuth()
 
-  // Placeholder function for logout
   const handleLogOut = () => {
-    console.log("User logged out");
-  };
+    logout();
+  }
 
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
