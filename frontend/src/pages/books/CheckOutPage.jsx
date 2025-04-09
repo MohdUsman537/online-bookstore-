@@ -1,39 +1,61 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCreateOrderMutation } from "../../redux/features/orders/ordersApi";
+import Swal from "sweetalert2";
+import { useAuth } from "../../context/AuthContext";
 
 const CheckOutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2);
-  const{currentUser}=useAuth();
+  const totalPrice = cartItems
+    .reduce((acc, item) => acc + item.newPrice, 0)
+    .toFixed(2);
+  const { currentUser } = useAuth();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-} = useForm()
-
-const onSubmit = (data) => {
+  } = useForm();
+  const [createOrder, { isLoading, error }] = useCreateOrderMutation();
+  const Navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
+  const onSubmit = async (data) => {
     console.log(data);
     const newOrder = {
-        name : data.name,
-        email: currentUser?.email,
-        address: {
-            city: data.city,
-            country : data.country,
-            state: data.state,
-            zipcode: data.zipcode
-
-        },
-        phone: data.phone,
-        productIds : cartItems.map(item=> item?._id),
-        totalPrice : totalPrice
+      name: data.name,
+      email: currentUser?.email,
+      address: {
+        city: data.city,
+        country: data.country,
+        state: data.state,
+        zipcode: data.zipcode,
+      },
+      phone: data.phone,
+      productIds: cartItems.map((item) => item?._id),
+      totalPrice: totalPrice,
+    };
+    try {
+      await createOrder(newOrder).unwrap();
+      Swal.fire({
+        title: "Confirmed Order",
+        text: "Your order placed successfully!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, It's ok!",
+      });
+      Navigate("/orders");
+    } catch {
+      console.log("Error creating an order", error);
+      alert("Error creating an order");
     }
-    console.log(newOrder);
-}
+  };
 
-const [isChecked,setIsChecked] = useState(false)
+  if (isLoading) return <div>Loading....</div>;
+  // const [isChecked,setIsChecked] = useState(false)
 
   return (
     <section>

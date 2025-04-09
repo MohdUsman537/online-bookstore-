@@ -10,7 +10,7 @@ import { useAuth } from "../context/AuthContext";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
-  { name: "Orders", href: "/order" },
+  { name: "Orders", href: "/orders" },
   { name: "Cart", href: "/cart" },
   { name: "Checkout", href: "/checkout" }, // Fixed the typo in "checkout"
 ];
@@ -21,6 +21,7 @@ const Navbar = () => {
   const cartItems = useSelector(state => state.cart.cartItems);
 
   const {currentUser, logout} = useAuth()
+  const token = localStorage.getItem('token');
 
   const handleLogOut = () => {
     logout();

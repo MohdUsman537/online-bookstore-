@@ -7,6 +7,7 @@ import CartPage from "../pages/books/CartPage";
 import CheckOutPage from "../pages/books/CheckOutPage";
 import SingleBook from "../pages/books/SingleBook";
 import PrivateRoute from "./PrivateRoute";
+import OrderPage from "../pages/books/OrderPage";
 
 
 // Router Directory(Entry Point)
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
         },
         {
             path:"/orders",
-            element: <div>Orders</div>
+            element: <PrivateRoute><OrderPage/></PrivateRoute>
         },
         {
             path:"/about",
