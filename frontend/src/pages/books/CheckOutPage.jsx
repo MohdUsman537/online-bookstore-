@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const CheckOutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2);
-  const currentUser = true; // Use get user for auth
+  const{currentUser}=useAuth();
   const {
     register,
     handleSubmit,
