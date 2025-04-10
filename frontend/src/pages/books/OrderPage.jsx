@@ -16,7 +16,7 @@ const OrderPage = () => {
     <div className="container mx-auto p-6">
       <h2 className="text-2xl font-semibold mb-4">Your Orders</h2>
       {orders.length === 0 ? (
-        <div>No orders found!</div>
+        <div>No Orders Found!</div>
       ) : (
         <div>
           {orders.map((order, index) => (

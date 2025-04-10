@@ -1,8 +1,11 @@
-
+//Similar as book route
 const express = require('express');
-const { createAOrder, getOrderBYEmail } = require('./order.controller');
+const { createAOrder, getOrderByEmail } = require('./order.controller');
 const router = express.Router();
+
+//create order endpoint
 router.post("/",createAOrder);
-//get ordeers by email address
-router.get("/email/:email",getOrderBYEmail);
+
+//get orders by email address
+router.get("/email/:email",getOrderByEmail);
 module.exports = router;

@@ -32,6 +32,7 @@ const orderSchema = new mongoose.Schema({
     },
     productsIds:[
         {
+            //Only product ID from backend.
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Book',
             require  :true,         
