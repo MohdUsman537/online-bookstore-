@@ -37,7 +37,7 @@ const AddBook = () => {
       
     }
 
-    const handleFileChange = (e) => {
+    const handleFileChange = (e) => { // e is an event
         const file = e.target.files[0];
         if(file) {
             setimageFile(file);
