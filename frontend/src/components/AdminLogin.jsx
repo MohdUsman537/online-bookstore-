@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
-
+import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const AdminLogin = () => {
   const [message, setMessage] = useState("")
@@ -10,12 +11,36 @@ const AdminLogin = () => {
           watch,
           formState: { errors },
         } = useForm()
+
+    const navigate = useNavigate();
+
   const onSubmit = async (data) => {
     console.log(data)
         try {
-            // navigate("/")
+            // getBaseUrl not working here.
+            const response = await axios.post(`http://localhost:5000/api/auth/admin`,data,{
+                headers: {
+                    'Content-Type' : 'application/json',
+
+                }
+            })
+            const auth = response.data;
+            console.log(auth); 
+            if(auth.token) {
+                localStorage.setItem('token',auth.token);
+                //token is same name from AdminRoute.jsx
+                setTimeout(() => {
+                    localStorage.removeItem('token');
+                    alert('Token has been expired!, Please login again');
+                    navigate("/");
+                },3600*1000) // 1hr in milliseconds
+            }
+
+            alert("Login Successful");
+            navigate("/dashboard");
+            
         } catch (error) {
-            SetMessage("Please provide valid email and password")
+            setMessage("Please provide valid email and password")
             console.error(error)
         }
       }

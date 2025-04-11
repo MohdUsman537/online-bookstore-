@@ -1,7 +1,7 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
-const AdminRoute = () => {
+const AdminRoute = ({children}) => {
   const token = localStorage.getItem('token')
 
   // if token not found, return to admin page.
@@ -9,7 +9,7 @@ const AdminRoute = () => {
   {
     return <Navigate to="/admin"/>
   }
-  return children ? children : <OutLet/>
+  return children ? children : <Outlet/>
 }
 
 export default AdminRoute
