@@ -9,8 +9,8 @@ export default {
     {
       colors: 
       {
-        'primary' : '#FFCEIA',
-        'secondary' : '#0D0842',
+        'primary' : '#FF6F3C',  // for Subscribe,Add to Cart Button
+        'secondary' : '#0D0842',  //hover color
         'blackBG' : '#F3F3F3',
         'Favourite' : '#FF5841',
       },

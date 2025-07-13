@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { RiBarChartHorizontalLine } from "react-icons/ri";
+import { FaBarsStaggered } from "react-icons/fa6";
 import { IoSearchCircle } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
-import { CiHeart, CiShoppingCart } from "react-icons/ci";
+import { MdFavorite } from "react-icons/md";
+import { CiShoppingCart } from "react-icons/ci";
 import iconImage from "../assets/avatar.png";
 import { useSelector } from "react-redux";
 import { useAuth } from "../context/AuthContext";
@@ -28,23 +29,27 @@ const Navbar = () => {
   }
 
   return (
-    <header className="max-w-screen-2xl mx-auto px-4 py-6">
+<header className="w-full bg-orange-500 bg-opacity-90">
+  <div className="max-w-screen-2xl mx-auto px-4 py-6">
       <nav className="flex justify-between items-center">
         {/* Left Side */}
         <div className="flex items-center md-gap-16 gap-4">
-          <Link to="/">
-            <RiBarChartHorizontalLine className="size-6" />
-          </Link>
+          
+            {/*Bar Icon*/} 
+            <Link to="/">
+              <FaBarsStaggered className="size-6" />
+            </Link>
 
-          {/* Search Input */}
-          <div className="relative sm:w-72 w-40 space-x-2">
-            <IoSearchCircle className="absolute inline-block left-3 inset-y-2" />
-            <input
-              type="text"
-              placeholder="What are you looking for?"
-              className="bg-[#EAEAEA] w-full py-1 md:px-8 px-6 rounded-md focus:outline-none"
-            />
-          </div>
+            {/* Search Input */}
+            <div className="relative sm:w-72 w-40 space-x-2">
+              <IoSearchCircle className="absolute inline-block left-3 inset-y-2" />
+              <input
+               type="text"
+               placeholder="What are you looking for?"
+               className="bg-[#EAEAEA] w-full py-1 md:px-8 px-6 rounded-md focus:outline-none"
+              />
+            </div>
+
         </div>
 
         {/* Right Side */}
@@ -86,7 +91,7 @@ const Navbar = () => {
                 )}
               </>
             ) : token ? (
-              <Link to="/dashboard" className="border-b-2 border-primary">
+              <Link to="/dashboard" className="border-b-2 border-secondary">
                 Dashboard
               </Link>
             ) : (
@@ -97,10 +102,10 @@ const Navbar = () => {
           </div>
 
           <button className="hidden sm:block">
-            <CiHeart className="size-6" />
+            <MdFavorite className="text-red-900 w-6 h-6" />
           </button>
 
-          <Link to="/cart" className="bg-yellow-400 p-1 sm:px-6 px-2 flex items-center rounded-sm">
+          <Link to="/cart" className="bg-white-400 hover:[background-color:#FFFF00] p-1 sm:px-6 px-2 flex items-center rounded-sm">
             <CiShoppingCart className="size-4" />
             {
                cartItems.length > 0  ?  <span className="text-sm font-semibold sm:ml-1">{cartItems.length}</span> :
@@ -109,6 +114,7 @@ const Navbar = () => {
           </Link>
         </div>
       </nav>
+      </div>
     </header>
   );
 };
