@@ -8,11 +8,16 @@ import { addToCart } from '../../redux/features/cart/cartSlice'
 
 
 const BookCard = ({book}) => {
+
+
   const dispatch = useDispatch();
   
- const handleAddToCart = (product) => {
-   dispatch(addToCart(product))
+ // book is payload(product)
+ const handleAddToCart = (book) => {
+   dispatch(addToCart(book));
  }
+
+
   return (
     <div className=" rounded-lg transition-shadow duration-300">
   <div
@@ -40,7 +45,9 @@ const BookCard = ({book}) => {
       ₹{book ?.newPrice} <span className="line-through font-normal ml-2">{book?.oldPrice}</span>
       </p>
       <button 
-      onClick={() => handleAddToCart(book)}
+
+      onClick={() => handleAddToCart(book)} // () means no argument. function is called after you click it.
+
       className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
         <FiShoppingCart className="" />
         <span>Add to Cart</span>

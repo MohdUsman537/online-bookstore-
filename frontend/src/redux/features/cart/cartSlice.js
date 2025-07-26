@@ -1,22 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
 import  Swal from 'sweetalert2';
 
-// Object
+// Object to keep books inside this array.
 const initialState = {
     cartItems: []
 } 
 
 
 const cartSlice = createSlice({
+
     name : 'cart',
     initialState : initialState,
 
     reducers:{
+        
+        // This includes all functions like addToCart.
+
         addToCart: (state,action) => {
+
             const existingItem = state.cartItems.find(item => item._id === action.payload._id)
         // to check if item added to cart or not.
+        
         if(!existingItem){
+
             state.cartItems.push(action.payload);
+
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -49,7 +57,8 @@ const cartSlice = createSlice({
     }
 })
 
-//export the actions
+
+//export the actions from function.actions(cartSlice)
 export const {addToCart,removeFromCart,clearCart} = cartSlice.actions;
 export default cartSlice.reducer;
 

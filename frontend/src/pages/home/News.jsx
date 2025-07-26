@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+
 import { Pagination,Navigation} from 'swiper/modules';
 
 import news1 from "../../assets/news/news-1.png"
@@ -50,7 +51,9 @@ const news = [
 const News = () => {
   return (
     <div className='py-16'>
-     <h2 className="text-3xl font-semobold mb:6">News</h2>
+
+     <h2 className="text-3xl font-semibold mb:6">News</h2>
+     
      <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -74,8 +77,10 @@ const News = () => {
       >
         {
             news.map((item,index) => (
+
                 <SwiperSlide key={index}>
                     <div className="flex flex-col sm:flex-row sm:justify between items-centre">
+
                         {/*Content*/}
                         <div className="py-4">
                             <Link to="/">
@@ -84,6 +89,8 @@ const News = () => {
                             {/* <div className="w-10 h-[4p] bg-yellow-300 mb-5"></div> */}
                             <p className="text-sm text-gray-600">{item.description}</p>
                         </div>
+
+                        {/*Image*/}
                         <div className="flex-shrink-0">
                             <img src={item.image} alt="" className='w-full object-cover'/>
                         </div>
