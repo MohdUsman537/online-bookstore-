@@ -11,7 +11,7 @@ const router = express.Router();
 // post = when submit something from frontend to db.
 // get =  when get something from db.
 // put/patch = when edit or update something.
-//delete = when delete something.
+//delete = when delete something from Database.
 
 
 // post a book.
