@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const orderSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -35,7 +36,7 @@ const orderSchema = new mongoose.Schema({
             //Only product ID from backend.
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Book',
-            require  :true,         
+            required  :true,         
         }
     ],
     totalPrice:{

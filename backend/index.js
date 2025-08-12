@@ -1,3 +1,6 @@
+// Main File for the Backend Server of the Bookstore Application
+// This file sets up the Express server, connects to MongoDB, and defines the API routes
+
 const express = require('express')
 const mongoose = require('mongoose') // Used to intert with MongoDB
 const app = express()
@@ -17,16 +20,17 @@ app.use(cors({
 
 
 
-//importing routes
+//importing routes from their respective route files.
 const bookRoutes = require('./src/books/book.route');
+app.use("/api/books" , bookRoutes) // storing all book related routes under /api/books
+
 const orderRoutes = require('./src/orders/order.route')
-const userRoutes = require('./src/users/user.route')
-const adminRoutes = require('./src/stats/admin.stats')
-
-
-app.use("/api/books" , bookRoutes)
 app.use("/api/orders" , orderRoutes)
+
+const userRoutes = require('./src/users/user.route')
 app.use("/api/auth",userRoutes)
+
+const adminRoutes = require('./src/stats/admin.stats')
 app.use("/api/admin",adminRoutes)
 
 

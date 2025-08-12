@@ -1,0 +1,7 @@
+1. Connecting Mongo DB Server
+
+2. making bookModel schema in book.model.js giving meaning to each attribute.
+
+3. Maintain book API in book.route.js These will be Imported into the index.js(backend) file.
+
+4. 

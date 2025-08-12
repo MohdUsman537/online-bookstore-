@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
-/* Creating Book Models*/
+
+// The code defines a Mongoose schema for a Book, and the attributes you 
+// see in the schema represent the properties of each book stored in your MongoDB database.
 
 const bookSchema = new mongoose.Schema({
     title: 
@@ -29,17 +31,19 @@ const bookSchema = new mongoose.Schema({
     },
     oldPrice: {
         type : Number,
-        reuired : true
+        required : true
     },
     NewPrice: {
         type : Number,
-        reuired : true
+        required : true
     },
     createdAt: {
         type:Date,
         default: Date.now,
     }
 },
+
+//timestamps adds time field automatically.
   {
      timestamps : true,
   }
