@@ -1,4 +1,5 @@
-(frontend/front-cover.png)
+
+<img src="frontend/front-cover.png" alt="Front Cover" width="800"/>
 
 How to run this project:
 For Frontend
