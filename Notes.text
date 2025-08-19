@@ -1,7 +1,11 @@
-1. Connecting Mongo DB Server
+1. Connecting Mongo DB Server using Express and Node.js
 
 2. making bookModel schema in book.model.js giving meaning to each attribute.
 
 3. Maintain book API in book.route.js These will be Imported into the index.js(backend) file.
 
-4. 
+4. Making CRUD function controllers like post,create,delete etc.
+
+5. Fire-Base Setup
+
+6.

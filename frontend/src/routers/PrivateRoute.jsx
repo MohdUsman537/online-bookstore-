@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Navigate } from 'react-router-dom'
 
-
+// wrappper class for private routes
 const PrivateRoute = ({children}) => {
 
     const {currentUser,loading}=useAuth();
@@ -16,7 +16,6 @@ const PrivateRoute = ({children}) => {
     }
     
     return <Navigate to="/login" replace />
-  
 }
 
 export default PrivateRoute

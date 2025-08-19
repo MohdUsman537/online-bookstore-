@@ -1,9 +1,14 @@
+// CRUD Operations
+
 const Book = require("./book.model");
 
 const postABook = async(req,res) =>{
+
     try{
         const newBook = await Book({...req.body});
+
         await newBook.save();
+        
         res.status(200).send({message: "book posted successfully",book:newBook})
 
     }catch(error)
@@ -17,7 +22,9 @@ const postABook = async(req,res) =>{
 const getAllBooks = async(req,res) => 
 {
     try{
+        // sorting books by created time.
         const books = await Book.find().sort({ createdAt : -1});
+        // sends array of books in JSON format.
         res.status(200).send(books)
         
     } catch(error)

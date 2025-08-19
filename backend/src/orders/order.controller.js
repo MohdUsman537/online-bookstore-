@@ -12,6 +12,7 @@ const createAOrder = async (req, res) => {
     res.status(500).send({ message: "Failed to create order" });
   }
 };
+
 const getOrderByEmail = async (req, res) => {
   try {
     const { email } = req.params;

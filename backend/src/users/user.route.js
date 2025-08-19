@@ -7,9 +7,11 @@ const JWT_SECRET = process.env.JWT_SECRET_KEY
 
 
 router.post("/admin" , async(req,res) => {
+    
     const {username,password} = req.body;
     try{
-        const admin = await User.findOne({username})
+        const admin = await User.findOne({username});
+        
         if(!admin)
         {
             res.status(404).send({message: "Admin not found"});
