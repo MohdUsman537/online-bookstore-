@@ -18,13 +18,16 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+// MiddleWare 1
 userSchema.pre('save',async function(next){
     
     if(!this.isModified('password')) return next();
     this.password = await bcrypt.hash(this.password,10);
     next();
-    })
+    });
 
+
+// create model using mongoose.model
 const User = mongoose.model('User',userSchema);
 
 module.exports = User

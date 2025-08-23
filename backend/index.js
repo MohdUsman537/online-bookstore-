@@ -1,10 +1,9 @@
 const express = require('express')
-const mongoose = require('mongoose') // Used to intert with MongoDB
+const mongoose = require('mongoose')
 const app = express()
 const cors = require("cors")
 
 
- 
 const port = process.env.PORT || 5000; 
 require('dotenv').config();
 
@@ -37,9 +36,6 @@ async function main()
     
     await mongoose.connect(process.env.DB_URL);
     
-    // req -> object  client sends
-    // res -> object server sends back
-    // Confirmation Message 
     app.get('/', (req, res) => 
         {
             res.send('Book Store Server Running !!')
